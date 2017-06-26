@@ -1,0 +1,15 @@
+syntax: glob
+
+*/CodeDB/*
+*/Debug/*
+
+*/.vs/*
+*.sdf
+*.user
+*/VisualGDBCache/*
+*.VC.opendb
+*.db
+*.o
+*.elf
+*.bin
+*.dep

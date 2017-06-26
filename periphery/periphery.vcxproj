@@ -1,0 +1,369 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{435961AC-10C6-45A2-AC0A-BF0436512DDF}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <NMakeIncludeSearchPath>.;c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0;c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\arm-eabi\thumb\cortex_m3;c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\backward;c:\sysgcc\arm-eabi\lib\gcc\arm-eabi\6.2.0\include;c:\sysgcc\arm-eabi\lib\gcc\arm-eabi\6.2.0\include-fixed;c:\sysgcc\arm-eabi\arm-eabi\sys-include;c:\sysgcc\arm-eabi\arm-eabi\include;../SourcePeriphery/CanBus/inc;../SourcePeriphery/Common/inc;../SourcePeriphery/Controls/inc;../SourcePeriphery/Drivers/inc;../SourcePeriphery/FreeRTOS/Source/include;../SourcePeriphery/FreeRTOS/Source/CMSIS_RTOS;../SourcePeriphery/App/inc;../SourceShared/Utils/inc;../SourcePeriphery/FreeRTOS/Source;../SourcePeriphery/FreeRTOS/Source/portable/GCC/ARM_CM3;../SourcePeriphery/Mbed/hal;../SourcePeriphery/Mbed/hal/storage_abstraction;../SourcePeriphery/Mbed/targets/cmsis;../SourcePeriphery/Mbed/targets/cmsis/TARGET_STM/TARGET_STM32F1;../SourcePeriphery/Mbed/targets/cmsis/TARGET_STM/TARGET_STM32F1/TARGET_BLUEPILL_F103C8;../SourcePeriphery/Mbed/targets/hal/TARGET_STM/TARGET_STM32F1;../SourcePeriphery/Mbed/api;../SourcePeriphery/Mbed/targets/hal/TARGET_STM/TARGET_STM32F1/TARGET_BLUEPILL_F103C8;../SourceShared/Can/inc;../SourceShared/Drivers/inc;../SourceShared/Models/inc;../SourceShared/inc;../SourcePeriphery/Config/inc;../SourcePeriphery/Devices/inc;../SourcePeriphery/Service/inc;../SourceShared/Service/GPS/inc;../SourcePeriphery/Drivers/Lcd;../SourceShared/Lcd;$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
+    <NMakeForcedIncludes>$(ProjectDir)\gcc_Debug.h;$(VISUALGDB_DIR)\gcc_compat.h;$(LOCALAPPDATA)\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\stm32_compat.h;$(NMakeForcedIncludes)</NMakeForcedIncludes>
+    <NMakeBuildCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /build "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeBuildCommandLine>
+    <NMakeCleanCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /clean "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeCleanCommandLine>
+    <NMakeReBuildCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /rebuild "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeReBuildCommandLine>
+    <NMakeOutput>$(ProjectDir)periphery.vgdbsettings</NMakeOutput>
+    <IncludePath />
+    <ReferencePath />
+    <LibraryPath />
+    <NMakePreprocessorDefinitions>__VisualGDB_CFG_Debug;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <NMakeIncludeSearchPath>.;c:\sysgcc\arm-eabi\arm-eabi\include\c++\5.3.0;c:\sysgcc\arm-eabi\arm-eabi\include\c++\5.3.0\arm-eabi\thumb\cortex_m3;c:\sysgcc\arm-eabi\arm-eabi\include\c++\5.3.0\backward;c:\sysgcc\arm-eabi\lib\gcc\arm-eabi\5.3.0\include;c:\sysgcc\arm-eabi\lib\gcc\arm-eabi\5.3.0\include-fixed;c:\sysgcc\arm-eabi\arm-eabi\sys-include;c:\sysgcc\arm-eabi\arm-eabi\include;$(LOCALAPPDATA)\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32F1xxxx\STM32F1xx_HAL_Driver\Inc;$(LOCALAPPDATA)\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32F1xxxx\STM32F1xx_HAL_Driver\Inc\Legacy;$(LOCALAPPDATA)\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32F1xxxx\CMSIS_HAL\Device\ST\STM32F1xx\Include;$(LOCALAPPDATA)\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32F1xxxx\CMSIS_HAL\Include;$(LOCALAPPDATA)\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32F1xxxx\CMSIS_HAL\RTOS\Template;$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
+    <NMakeForcedIncludes>$(ProjectDir)\gcc_Release.h;$(VISUALGDB_DIR)\gcc_compat.h;$(LOCALAPPDATA)\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\stm32_compat.h;$(NMakeForcedIncludes)</NMakeForcedIncludes>
+    <NMakePreprocessorDefinitions>__VisualGDB_CFG_Release;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+    <NMakeBuildCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /build "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeBuildCommandLine>
+    <NMakeCleanCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /clean "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeCleanCommandLine>
+    <NMakeReBuildCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /rebuild "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeReBuildCommandLine>
+    <NMakeOutput>$(ProjectDir)periphery-Release.vgdbsettings</NMakeOutput>
+    <IncludePath />
+    <ReferencePath />
+    <LibraryPath />
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="..\SourcePeriphery\DeviceSpecific\STM32F103CB_flash.lds" />
+    <None Include="debug.mak" />
+    <None Include="Makefile" />
+    <None Include="periphery-Debug.vgdbsettings" />
+    <None Include="periphery-Release.vgdbsettings" />
+    <None Include="release.mak" />
+    <None Include="STM32F103CB_flash.lds" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="stm32.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\SourcePeriphery\App\inc\Rcc.hpp" />
+    <ClInclude Include="..\SourcePeriphery\App\inc\stm32f1xx_it.h" />
+    <ClInclude Include="..\SourcePeriphery\Config\inc\GlobalConfig.h" />
+    <ClInclude Include="..\SourcePeriphery\Drivers\inc\ButtonNonBounce.h" />
+    <ClInclude Include="..\SourcePeriphery\Drivers\inc\PwmOutT.h" />
+    <ClInclude Include="..\SourcePeriphery\FreeRTOS\Source\CMSIS_RTOS\cmsis_os.h" />
+    <ClInclude Include="..\SourcePeriphery\FreeRTOS\Source\include\deprecated_definitions.h" />
+    <ClInclude Include="..\SourcePeriphery\FreeRTOS\Source\include\event_groups.h" />
+    <ClInclude Include="..\SourcePeriphery\FreeRTOS\Source\include\FreeRTOS.h" />
+    <ClInclude Include="..\SourcePeriphery\FreeRTOS\Source\include\FreeRTOSConfig.h" />
+    <ClInclude Include="..\SourcePeriphery\FreeRTOS\Source\include\list.h" />
+    <ClInclude Include="..\SourcePeriphery\FreeRTOS\Source\include\mpu_wrappers.h" />
+    <ClInclude Include="..\SourcePeriphery\FreeRTOS\Source\include\portable.h" />
+    <ClInclude Include="..\SourcePeriphery\FreeRTOS\Source\include\portmacro.h" />
+    <ClInclude Include="..\SourcePeriphery\FreeRTOS\Source\include\projdefs.h" />
+    <ClInclude Include="..\SourcePeriphery\FreeRTOS\Source\include\queue.h" />
+    <ClInclude Include="..\SourcePeriphery\FreeRTOS\Source\include\semphr.h" />
+    <ClInclude Include="..\SourcePeriphery\FreeRTOS\Source\include\StackMacros.h" />
+    <ClInclude Include="..\SourcePeriphery\FreeRTOS\Source\include\task.h" />
+    <ClInclude Include="..\SourcePeriphery\FreeRTOS\Source\include\timers.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\AnalogIn.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\AnalogOut.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\BusIn.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\BusInOut.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\BusOut.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\Callback.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\CallChain.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\CAN.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\can_helper.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\CircularBuffer.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\critical.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\CThunk.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\DigitalIn.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\DigitalInOut.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\DigitalOut.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\DirHandle.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\Ethernet.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\FileBase.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\FileHandle.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\FileLike.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\FilePath.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\FileSystemLike.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\FunctionPointer.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\I2C.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\I2CSlave.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\InterruptIn.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\InterruptManager.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\LocalFileSystem.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\LowPowerTicker.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\LowPowerTimeout.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\LowPowerTimer.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\mbed.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\mbed_assert.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\mbed_debug.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\mbed_error.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\mbed_interface.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\platform.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\PortIn.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\PortInOut.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\PortOut.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\PwmOut.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\RawSerial.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\rtc_time.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\semihost_api.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\Serial.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\SerialBase.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\SPI.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\SPISlave.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\Stream.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\Ticker.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\Timeout.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\Timer.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\TimerEvent.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\toolchain.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\Transaction.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\api\wait_api.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\hal\analogin_api.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\hal\analogout_api.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\hal\buffer.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\hal\can_api.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\hal\dma_api.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\hal\ethernet_api.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\hal\gpio_api.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\hal\gpio_irq_api.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\hal\i2c_api.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\hal\lp_ticker_api.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\hal\pinmap.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\hal\port_api.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\hal\pwmout_api.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\hal\rtc_api.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\hal\serial_api.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\hal\sleep_api.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\hal\spi_api.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\hal\storage_abstraction\Driver_Common.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\hal\storage_abstraction\Driver_Storage.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\hal\ticker_api.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\hal\us_ticker_api.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\arm_common_tables.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\arm_const_structs.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\arm_math.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\core_ca9.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\core_caFunc.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\core_caInstr.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\core_ca_mmu.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\core_cm0.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\core_cm0plus.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\core_cm3.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\core_cm4.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\core_cm4_simd.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\core_cm7.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\core_cmFunc.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\core_cmInstr.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\core_cmSecureAccess.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\core_cmSimd.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\core_sc000.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\core_sc300.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_adc.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_adc_ex.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_can.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_can_ex.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_cec.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_cortex.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_crc.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_dac.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_dac_ex.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_def.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_dma.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_dma_ex.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_eth.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_flash.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_flash_ex.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_gpio.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_gpio_ex.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_hcd.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_i2c.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_i2s.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_irda.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_iwdg.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_nor.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_pcd.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_pcd_ex.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_pwr.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_rcc.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_rcc_ex.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_rtc.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_rtc_ex.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_sd.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_spi.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_tim.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_tim_ex.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_uart.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_usart.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32_hal_legacy.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\TARGET_BLUEPILL_F103C8\cmsis.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\TARGET_BLUEPILL_F103C8\cmsis_nvic.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\TARGET_BLUEPILL_F103C8\hal_tick.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\TARGET_BLUEPILL_F103C8\stm32f103xb.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\TARGET_BLUEPILL_F103C8\stm32f1xx.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\TARGET_BLUEPILL_F103C8\stm32f1xx_hal_conf.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\TARGET_BLUEPILL_F103C8\system_stm32f1xx.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\hal\TARGET_STM\TARGET_STM32F1\common_objects.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\hal\TARGET_STM\TARGET_STM32F1\gpio_object.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\hal\TARGET_STM\TARGET_STM32F1\PeripheralPins.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\hal\TARGET_STM\TARGET_STM32F1\TARGET_BLUEPILL_F103C8\device.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\hal\TARGET_STM\TARGET_STM32F1\TARGET_BLUEPILL_F103C8\objects.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\hal\TARGET_STM\TARGET_STM32F1\TARGET_BLUEPILL_F103C8\PeripheralNames.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\hal\TARGET_STM\TARGET_STM32F1\TARGET_BLUEPILL_F103C8\PinNames.h" />
+    <ClInclude Include="..\SourcePeriphery\Mbed\targets\hal\TARGET_STM\TARGET_STM32F1\TARGET_BLUEPILL_F103C8\PortNames.h" />
+    <ClInclude Include="..\SourcePeriphery\Service\inc\OsTimer.h" />
+    <ClInclude Include="..\SourcePeriphery\Service\inc\PulseGenerator.h" />
+    <ClInclude Include="..\Source\Common\inc\defines.h" />
+    <ClInclude Include="..\Source\Controls\inc\FlaperonsController.h" />
+    <ClInclude Include="..\Source\Controls\inc\GondolasController.h" />
+    <ClInclude Include="..\Source\Controls\inc\LidarController.h" />
+    <ClInclude Include="..\Source\Controls\inc\VTailController.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\SourcePeriphery\App\src\main.cpp" />
+    <ClCompile Include="..\SourcePeriphery\App\src\Rcc.cpp" />
+    <ClCompile Include="..\SourcePeriphery\App\src\stm32f1xx_it.c" />
+    <ClCompile Include="..\SourcePeriphery\DeviceSpecific\startup_stm32f103xb.c" />
+    <ClCompile Include="..\SourcePeriphery\Drivers\src\ButtonNonBounce.cpp" />
+    <ClCompile Include="..\SourcePeriphery\Drivers\src\PwmOutT.cpp" />
+    <ClCompile Include="..\SourcePeriphery\FreeRTOS\Source\CMSIS_RTOS\cmsis_os.c" />
+    <ClCompile Include="..\SourcePeriphery\FreeRTOS\Source\event_groups.c" />
+    <ClCompile Include="..\SourcePeriphery\FreeRTOS\Source\include\port.c" />
+    <ClCompile Include="..\SourcePeriphery\FreeRTOS\Source\list.c" />
+    <ClCompile Include="..\SourcePeriphery\FreeRTOS\Source\portable\MemMang\heap_4.c" />
+    <ClCompile Include="..\SourcePeriphery\FreeRTOS\Source\queue.c" />
+    <ClCompile Include="..\SourcePeriphery\FreeRTOS\Source\tasks.c" />
+    <ClCompile Include="..\SourcePeriphery\FreeRTOS\Source\timers.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\common\AnalogIn.cpp" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\common\assert.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\common\board.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\common\BusIn.cpp" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\common\BusInOut.cpp" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\common\BusOut.cpp" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\common\CallChain.cpp" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\common\CAN.cpp" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\common\critical.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\common\error.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\common\Ethernet.cpp" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\common\FileBase.cpp" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\common\FileLike.cpp" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\common\FilePath.cpp" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\common\FileSystemLike.cpp" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\common\gpio.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\common\I2C.cpp" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\common\I2CSlave.cpp" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\common\InterruptIn.cpp" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\common\InterruptManager.cpp" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\common\LocalFileSystem.cpp" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\common\lp_ticker_api.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\common\mbed_interface.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\common\pinmap_common.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\common\RawSerial.cpp" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\common\retarget.cpp" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\common\rtc_time.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\common\semihost_api.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\common\Serial.cpp" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\common\SerialBase.cpp" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\common\SPI.cpp" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\common\SPISlave.cpp" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\common\Stream.cpp" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\common\Ticker.cpp" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\common\ticker_api.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\common\Timeout.cpp" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\common\Timer.cpp" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\common\TimerEvent.cpp" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\common\us_ticker_api.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\common\wait_api.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_adc.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_adc_ex.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_can.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_cec.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_cortex.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_crc.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_dac.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_dac_ex.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_dma.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_eth.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_flash.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_flash_ex.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_gpio.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_gpio_ex.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_hcd.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_i2c.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_i2s.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_irda.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_iwdg.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_nor.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_pcd.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_pcd_ex.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_pwr.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_rcc.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_rcc_ex.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_rtc.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_rtc_ex.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_sd.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_spi.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_spi_ex.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_tim.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_tim_ex.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_uart.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\stm32f1xx_hal_usart.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\TARGET_BLUEPILL_F103C8\cmsis_nvic.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\TARGET_BLUEPILL_F103C8\hal_tick.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\cmsis\TARGET_STM\TARGET_STM32F1\TARGET_BLUEPILL_F103C8\system_stm32f1xx.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\hal\TARGET_STM\TARGET_STM32F1\analogin_api.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\hal\TARGET_STM\TARGET_STM32F1\can_api.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\hal\TARGET_STM\TARGET_STM32F1\gpio_api.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\hal\TARGET_STM\TARGET_STM32F1\gpio_irq_api.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\hal\TARGET_STM\TARGET_STM32F1\i2c_api.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\hal\TARGET_STM\TARGET_STM32F1\mbed_overrides.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\hal\TARGET_STM\TARGET_STM32F1\pinmap.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\hal\TARGET_STM\TARGET_STM32F1\port_api.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\hal\TARGET_STM\TARGET_STM32F1\pwmout_api.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\hal\TARGET_STM\TARGET_STM32F1\rtc_api.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\hal\TARGET_STM\TARGET_STM32F1\serial_api.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\hal\TARGET_STM\TARGET_STM32F1\sleep.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\hal\TARGET_STM\TARGET_STM32F1\spi_api.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\hal\TARGET_STM\TARGET_STM32F1\TARGET_BLUEPILL_F103C8\PeripheralPins.c" />
+    <ClCompile Include="..\SourcePeriphery\Mbed\targets\hal\TARGET_STM\TARGET_STM32F1\us_ticker.c" />
+    <ClCompile Include="..\SourcePeriphery\Service\src\OsTimer.cpp" />
+    <ClCompile Include="..\SourcePeriphery\Service\src\PulseGenerator.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
