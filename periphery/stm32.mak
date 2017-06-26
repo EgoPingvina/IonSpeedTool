@@ -7,7 +7,7 @@
 BSP_ROOT ?= $(LOCALAPPDATA)/VisualGDB/EmbeddedBSPs/arm-eabi/com.sysprogs.arm.stm32
 EFP_BASE ?= $(LOCALAPPDATA)/VisualGDB/EmbeddedEFPs
 TESTFW_BASE ?= $(LOCALAPPDATA)/VisualGDB/TestFrameworks
-TOOLCHAIN_ROOT ?= C:/SysGCC/arm-eabi
+TOOLCHAIN_ROOT ?= c:/SysGCC/arm-eabi
 #Embedded toolchain
 CC := $(TOOLCHAIN_ROOT)/bin/arm-eabi-gcc.exe
 CXX := $(TOOLCHAIN_ROOT)/bin/arm-eabi-g++.exe
@@ -19,7 +19,7 @@ OBJCOPY := $(TOOLCHAIN_ROOT)/bin/arm-eabi-objcopy.exe
 PREPROCESSOR_MACROS += ARM_MATH_CM3 STM32F103CB
 INCLUDE_DIRS += .
 LIBRARY_DIRS += 
-LIBRARY_NAMES += compactcpp
+LIBRARY_NAMES += 
 ADDITIONAL_LINKER_INPUTS += 
 MACOS_FRAMEWORKS += 
 LINUX_PACKAGES += 
