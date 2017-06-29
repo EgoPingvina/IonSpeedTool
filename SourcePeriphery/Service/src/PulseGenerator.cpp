@@ -25,15 +25,15 @@ static void MX_GPIO_Init(void)
 
 #pragma endregion
 
-extern "C" void TIM_Period_IRQ_Handler()
-{
-	PulseGenerator::Instance().PeriodTickHandler();
-}
+//extern "C" void TIM_Period_IRQ_Handler()
+//{
+//	PulseGenerator::Instance().PeriodTickHandler();
+//}
 
-extern "C" void TIM_Durability_IRQ_Handler()
-{
-	PulseGenerator::Instance().DurabilityTickHandler();
-}
+//extern "C" void TIM_Durability_IRQ_Handler()
+//{
+//	PulseGenerator::Instance().DurabilityTickHandler();
+//}
 
 // »нициализаци€ экземпл€ра-одиночки
 PulseGenerator PulseGenerator::self;
@@ -62,6 +62,7 @@ void PulseGenerator::DurabilityTickHandler()
 
 			// останавливаем таймер до возбуждени€ следующего пика
 			HAL_TIM_OC_Stop_IT(&this->timerDurability, TIM_CHANNEL_1);
+			HAL_TIM_Base_Stop_IT(&this->timerPeriod);
 		}
 }
 

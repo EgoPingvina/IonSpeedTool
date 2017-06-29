@@ -47,7 +47,7 @@ private:
 	/* Период второго таймера должен быть больше, чем Pulse. По ТЗ
 	 * пульс 1,5 мкс, поэтому делаем 25 мкс(цена деления 0,5 мкс)
 	 */
-	const int32_t magicDurabilityPeriod = 50;
+	const int32_t magicDurabilityPeriod = 100;
 
 	/// <summary>
 	/// Таймер периода (кратность 100 мкс)

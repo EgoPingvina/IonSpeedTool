@@ -5,6 +5,8 @@
 
 #include "PulseGenerator.h"
 
+#include "Pulsar.h"
+
 Serial pc(PA_2, PA_3);
 
 PulseGenerator& timer = PulseGenerator::Instance();
@@ -13,8 +15,11 @@ int main()
 {
 	SystemClock_Config();
 
-	pc.baud(115200);
-	timer.Initialize(1000, 3);
+	//pc.baud(115200);
+	//timer.Initialize(1000, 3);
+
+	Pulsar::AccurateTimerInit();
+	Pulsar::PeriodicTimerInit();
 
 	osKernelStart();
 }

@@ -5,10 +5,6 @@
       <UniqueIdentifier>{0295fbe5-8f27-4f58-9614-4077a4071478}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
     </Filter>
-    <Filter Include="Make files">
-      <UniqueIdentifier>{2c238942-eff2-4ead-817a-e1ff40d3c022}</UniqueIdentifier>
-      <Extensions>*.mak</Extensions>
-    </Filter>
     <Filter Include="VisualGDB settings">
       <UniqueIdentifier>{9a4b3608-dbff-43b7-ab94-d112fed70565}</UniqueIdentifier>
       <Extensions>*.vgdbsettings</Extensions>
@@ -93,20 +89,8 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Makefile" />
-    <None Include="debug.mak">
-      <Filter>Make files</Filter>
-    </None>
-    <None Include="release.mak">
-      <Filter>Make files</Filter>
-    </None>
-    <None Include="periphery-Debug.vgdbsettings" />
-    <None Include="periphery-Release.vgdbsettings" />
     <None Include="..\SourcePeriphery\DeviceSpecific\STM32F103CB_flash.lds">
       <Filter>Mbed\target\DeviceSpecific</Filter>
-    </None>
-    <None Include="STM32F103CB_flash.lds">
-      <Filter>Make files</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -643,6 +627,9 @@
     <ClInclude Include="..\SourcePeriphery\Service\inc\OsTimer.h">
       <Filter>Service\inc</Filter>
     </ClInclude>
+    <ClInclude Include="..\SourcePeriphery\Service\inc\Pulsar.h">
+      <Filter>Service\inc</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\SourcePeriphery\Mbed\common\AnalogIn.cpp">
@@ -970,6 +957,9 @@
       <Filter>Service\src</Filter>
     </ClCompile>
     <ClCompile Include="..\SourcePeriphery\Service\src\OsTimer.cpp">
+      <Filter>Service\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\SourcePeriphery\Service\src\Pulsar.cpp">
       <Filter>Service\src</Filter>
     </ClCompile>
   </ItemGroup>

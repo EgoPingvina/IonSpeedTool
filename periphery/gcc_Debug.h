@@ -5,6 +5,9 @@
 	It is needed for IntelliSense to parse other header files correctly.
 */
 #if defined(_MSC_VER) || defined (__SYSPROGS_CODESENSE__)
+#pragma clang diagnostic push
+
+#pragma clang diagnostic ignored "-Wreserved-id-macro"
 #ifndef __DBL_MIN_EXP__
 #define __DBL_MIN_EXP__ (-1021)
 #endif
@@ -1168,6 +1171,22 @@
 #endif
 
 // --- Include directories begin --- //
+//../SourcePeriphery/Drivers/inc
+//../SourcePeriphery/FreeRTOS/Source/include
+//../SourcePeriphery/FreeRTOS/Source/CMSIS_RTOS
+//../SourcePeriphery/App/inc
+//../SourcePeriphery/FreeRTOS/Source
+//../SourcePeriphery/FreeRTOS/Source/portable/GCC/ARM_CM3
+//../SourcePeriphery/Mbed/hal
+//../SourcePeriphery/Mbed/hal/storage_abstraction
+//../SourcePeriphery/Mbed/targets/cmsis
+//../SourcePeriphery/Mbed/targets/cmsis/TARGET_STM/TARGET_STM32F1
+//../SourcePeriphery/Mbed/targets/cmsis/TARGET_STM/TARGET_STM32F1/TARGET_BLUEPILL_F103C8
+//../SourcePeriphery/Mbed/targets/hal/TARGET_STM/TARGET_STM32F1
+//../SourcePeriphery/Mbed/api
+//../SourcePeriphery/Mbed/targets/hal/TARGET_STM/TARGET_STM32F1/TARGET_BLUEPILL_F103C8
+//../SourcePeriphery/Config/inc
+//../SourcePeriphery/Service/inc
 //.
 //c:\sysgcc\arm-eabi\bin\../lib/gcc/arm-eabi/6.2.0/../../../../arm-eabi/include/c++/6.2.0
 //c:\sysgcc\arm-eabi\bin\../lib/gcc/arm-eabi/6.2.0/../../../../arm-eabi/include/c++/6.2.0/arm-eabi/thumb/cortex_m3
@@ -1179,29 +1198,13 @@
 //../SourcePeriphery/CanBus/inc
 //../SourcePeriphery/Common/inc
 //../SourcePeriphery/Controls/inc
-//../SourcePeriphery/Drivers/inc
-//../SourcePeriphery/FreeRTOS/Source/include
-//../SourcePeriphery/FreeRTOS/Source/CMSIS_RTOS
-//../SourcePeriphery/App/inc
 //../SourcePeriphery/Services/inc
 //../SourceShared/Utils/inc
-//../SourcePeriphery/FreeRTOS/Source
-//../SourcePeriphery/FreeRTOS/Source/portable/GCC/ARM_CM3
-//../SourcePeriphery/Mbed/hal
-//../SourcePeriphery/Mbed/hal/storage_abstraction
-//../SourcePeriphery/Mbed/targets/cmsis
-//../SourcePeriphery/Mbed/targets/cmsis/TARGET_STM/TARGET_STM32F1
-//../SourcePeriphery/Mbed/targets/cmsis/TARGET_STM/TARGET_STM32F1/TARGET_BLUEPILL_F103C8
-//../SourcePeriphery/Mbed/targets/hal/TARGET_STM/TARGET_STM32F1
-//../SourcePeriphery/Mbed/api
-//../SourcePeriphery/Mbed/targets/hal/TARGET_STM/TARGET_STM32F1/TARGET_BLUEPILL_F103C8
 //../SourceShared/Can/inc
 //../SourceShared/Drivers/inc
 //../SourceShared/Models/inc
 //../SourceShared/inc
-//../SourcePeriphery/Config/inc
 //../SourcePeriphery/Devices/inc
-//../SourcePeriphery/Service/inc
 //../SourceShared/Service/GPS/inc
 //../SourcePeriphery/Drivers/Lcd
 //../SourceShared/Lcd
@@ -1216,3 +1219,4 @@
 //c:/sysgcc/arm-eabi/bin/../lib/gcc/arm-eabi/6.2.0/../../../../arm-eabi/lib/
 // --- Library directories begin --- //
 
+#pragma clang diagnostic pop
