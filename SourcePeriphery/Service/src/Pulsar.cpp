@@ -3,12 +3,9 @@
 //Индикация
 DigitalOut process_led	= { PA_5, 0 };
 DigitalOut alarm_led	= { PA_4, 0 };
-DigitalOut test_out		= { PA_0, 0 };
 
 Pulsar::Pulsar()
 {
-	AccurateTimerInit();
-	PeriodicTimerInit();
 }
 
 Pulsar& Pulsar::Instance()
@@ -18,8 +15,18 @@ Pulsar& Pulsar::Instance()
 	return singlePulsar;
 }
 
-TIM_HandleTypeDef * Pulsar::GetTimAccurateHandler() { return &Pulsar::htimAccurate; }
-TIM_HandleTypeDef * Pulsar::GetTimPeriodicHandler() { return &Pulsar::htimPeriodic; }
+bool Pulsar::Initialize()
+{
+	AccurateTimerInit();
+	InputCaptureTimerInit();
+	PeriodicTimerInit();
+
+	return true;
+}
+
+TIM_HandleTypeDef * Pulsar::GetTimAccurateHandler()		{ return &Pulsar::htimAccurate; }
+TIM_HandleTypeDef * Pulsar::GetTimPeriodicHandler()		{ return &Pulsar::htimPeriodic; }
+TIM_HandleTypeDef * Pulsar::GetTimInputCaptureHandler() { return &Pulsar::htimInputCapture; }
 
 void Pulsar::AccurateTimerInit()
 {
@@ -154,9 +161,9 @@ void Pulsar::PeriodicTimerInit()
 	pclkFrequency = HAL_RCC_GetPCLK1Freq();
 
 	/************************* Базовая настройка таймера ****************************/
-	__HAL_RCC_TIM2_CLK_ENABLE();
-	__TIM2_FORCE_RESET();
-	__TIM2_RELEASE_RESET();
+	__HAL_RCC_TIM1_CLK_ENABLE();
+	__TIM1_FORCE_RESET();
+	__TIM1_RELEASE_RESET();
 
 	//0.5 ms per tick
 	if (clockConfig.APB1CLKDivider == RCC_HCLK_DIV1)
@@ -164,7 +171,7 @@ void Pulsar::PeriodicTimerInit()
 	else
 		htimPeriodic.Init.Prescaler = static_cast<uint16_t>((pclkFrequency * 2) / 2000 - 1);
 
-	htimPeriodic.Instance				= TIM2;
+	htimPeriodic.Instance				= TIM1;
 	htimPeriodic.Init.CounterMode		= TIM_COUNTERMODE_UP;
 	htimPeriodic.Init.Period			= PeriodicTimerSettings::truePeriod_ms;
 	htimPeriodic.Init.ClockDivision		= TIM_CLOCKDIVISION_DIV1;
@@ -177,21 +184,95 @@ void Pulsar::PeriodicTimerInit()
 
 	__HAL_TIM_CLEAR_IT(&htimPeriodic, TIM_IT_UPDATE);
 
+	NVIC_SetPriority(TIM1_UP_IRQn, 0);
+	NVIC_EnableIRQ(TIM1_UP_IRQn);
+
+	if (HAL_TIM_Base_Start_IT(&htimPeriodic) != HAL_OK)
+		alarm_led = 1;
+
+}
+
+void Pulsar::InputCaptureTimerInit()
+{
+	GPIO_InitTypeDef GPIO_InitStruct;
+
+	RCC_ClkInitTypeDef clockConfig;
+	uint32_t pclkFrequency;
+
+	// Собираем информацию об установленных настройках
+	HAL_RCC_GetClockConfig(&clockConfig, &pclkFrequency);
+	pclkFrequency = HAL_RCC_GetPCLK1Freq();
+
+	/************************** TIM2 GPIO Configuration *******************************/
+	/**
+		PA0     ------> TIM3_CH1
+	*/
+	__HAL_RCC_GPIOA_CLK_ENABLE();
+
+	GPIO_InitStruct.Pin = GPIO_PIN_0;
+	GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+	GPIO_InitStruct.Pull = GPIO_NOPULL;
+
+	HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+	/************************* Базовая настройка таймера ****************************/
+	__HAL_RCC_TIM2_CLK_ENABLE();
+	__TIM2_FORCE_RESET();
+	__TIM2_RELEASE_RESET();
+
+	//1 us per tick
+	if (clockConfig.APB1CLKDivider == RCC_HCLK_DIV1)
+		htimInputCapture.Init.Prescaler = static_cast<uint16_t>((pclkFrequency) / 1000000 - 1);
+	else
+		htimInputCapture.Init.Prescaler = static_cast<uint16_t>((pclkFrequency * 2) / 1000000 - 1);
+
+	htimInputCapture.Instance = TIM2;
+	htimInputCapture.Init.CounterMode = TIM_COUNTERMODE_UP;
+	htimInputCapture.Init.Period = 60000;
+	htimInputCapture.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+	htimInputCapture.Init.RepetitionCounter = 0;
+
+	HAL_TIM_IC_Init(&htimInputCapture);
+
+	/********************** Настройка входного канала таймера *************************/
+
+	TIM_IC_InitTypeDef sConfigIC;
+
+	sConfigIC.ICPolarity = TIM_INPUTCHANNELPOLARITY_RISING;
+	sConfigIC.ICSelection = TIM_ICSELECTION_DIRECTTI;
+	sConfigIC.ICPrescaler = TIM_ICPSC_DIV1;
+	sConfigIC.ICFilter = 1;
+
+	if (HAL_TIM_IC_ConfigChannel(&htimInputCapture, &sConfigIC, TIM_CHANNEL_1) != HAL_OK)
+		alarm_led = 1;
+
+	/************************* Настройка прерываний *********************************/
+
+	__HAL_TIM_CLEAR_IT(&htimInputCapture, TIM_IT_UPDATE);
+	__HAL_TIM_CLEAR_IT(&htimInputCapture, TIM_IT_CC1);
+
 	NVIC_SetPriority(TIM2_IRQn, 0);
 	NVIC_EnableIRQ(TIM2_IRQn);
 
+	//if (HAL_TIM_Base_Start_IT(&htimInputCapture) != HAL_OK)
+	//	alarm_led = 1;
 
-	//Запуск периодического таймера
-	if (HAL_TIM_Base_Start_IT(&htimPeriodic) != HAL_OK)
-		alarm_led = 1;
+	//if (HAL_TIM_IC_Start_IT(&htimInputCapture, TIM_CHANNEL_1) != HAL_OK)
+	//	alarm_led = 1;
 }
 
+extern "C" void TIM1_UP_IRQHandler(void)
+{
+	static Pulsar& pulsarInstance = Pulsar::Instance();
+
+	HAL_TIM_IRQHandler(pulsarInstance.GetTimPeriodicHandler());
+}
 
 extern "C" void TIM2_IRQHandler(void)
 {
 	static Pulsar& pulsarInstance = Pulsar::Instance();
 
-	HAL_TIM_IRQHandler(pulsarInstance.GetTimPeriodicHandler());
+	HAL_TIM_IRQHandler(pulsarInstance.GetTimInputCaptureHandler());
 }
 
 extern "C" void TIM3_IRQHandler(void)
@@ -208,30 +289,32 @@ extern "C" void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 
 	TIM_OC_InitTypeDef sConfigOC;
 
-	if (htim->Instance == TIM2)
-	{
-		test_out = !test_out;
-		
+	if (htim->Instance == TIM1)
+	{	
 		//Запуск смещающего канала 20 us
 		HAL_TIM_OC_Start_IT(pulsarInstance.GetTimAccurateHandler(), TIM_CHANNEL_4);
 
 		//Запуск строба
-		//HAL_TIM_OnePulse_Start(Pulsar::GetTimAccurateHandler(), TIM_CHANNEL_1);
 		HAL_TIM_OC_Start_IT(pulsarInstance.GetTimAccurateHandler(), TIM_CHANNEL_1);
 
 		//Запуск упреждающего канала для останова таймера
 		HAL_TIM_OC_Start_IT(pulsarInstance.GetTimAccurateHandler(), TIM_CHANNEL_3);
+
+		return;
+	}
+
+	if (htim->Instance == TIM2)
+	{
+		process_led = !process_led;
+
+		return;
 	}
 
 	if (htim->Instance == TIM3)
 	{
-		if (htim->Channel == TIM_CHANNEL_1)
-		{
-			//HAL_TIM_Base_Stop_IT(Pulsar::GetTimAccurateHandler());
-			//HAL_TIM_OnePulse_Stop(Pulsar::GetTimAccurateHandler(), TIM_CHANNEL_1);
-			//HAL_TIM_OC_Stop(Pulsar::GetTimAccurateHandler(), TIM_CHANNEL_1);
-		}
-		
+		if (htim->Channel == TIM_CHANNEL_1) {}
+
+		return;
 	}
 }
 
@@ -248,18 +331,18 @@ extern "C" void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim)
 		//Выяснить по какому из каналов произошло совпадение
 		switch (htim->Channel)
 		{
-		case HAL_TIM_ACTIVE_CHANNEL_1:
+		case HAL_TIM_ACTIVE_CHANNEL_1: //Конец импульса-строба
 		{
 			break;
 		}
 
-		case HAL_TIM_ACTIVE_CHANNEL_2:
+		case HAL_TIM_ACTIVE_CHANNEL_2: //Конец импульса-метки
 		{
 			
 			break;
 		}
 
-		case HAL_TIM_ACTIVE_CHANNEL_3:
+		case HAL_TIM_ACTIVE_CHANNEL_3: //Останов таймера и режимов сравнения CH1, CH2
 		{
 			HAL_TIM_OC_Stop(pulsarInstance.GetTimAccurateHandler(), TIM_CHANNEL_1);
 			HAL_TIM_OC_Stop(pulsarInstance.GetTimAccurateHandler(), TIM_CHANNEL_2);
@@ -267,10 +350,14 @@ extern "C" void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim)
 			break;
 		}
 
-		case HAL_TIM_ACTIVE_CHANNEL_4:
+		case HAL_TIM_ACTIVE_CHANNEL_4:	//Начало импульса метки
 		{
 
 			HAL_TIM_OC_Start(pulsarInstance.GetTimAccurateHandler(), TIM_CHANNEL_2);
+
+			//Активация прерывания по периоду счетного таймера
+			HAL_TIM_Base_Start_IT(pulsarInstance.GetTimInputCaptureHandler());
+
 
 			break;
 		}
@@ -281,3 +368,4 @@ extern "C" void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim)
 
 TIM_HandleTypeDef Pulsar::htimPeriodic;
 TIM_HandleTypeDef Pulsar::htimAccurate;
+TIM_HandleTypeDef Pulsar::htimInputCapture;

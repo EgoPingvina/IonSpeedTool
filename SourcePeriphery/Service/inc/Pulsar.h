@@ -11,8 +11,11 @@ public:
 
 	static Pulsar& Instance();
 
+	bool Initialize();
+
 	TIM_HandleTypeDef* GetTimAccurateHandler();
 	TIM_HandleTypeDef* GetTimPeriodicHandler();
+	TIM_HandleTypeDef* GetTimInputCaptureHandler();
 
 private:
 
@@ -55,15 +58,18 @@ private:
 	//Начальная настройка таймеров
 	static void AccurateTimerInit();
 	static void PeriodicTimerInit();
+	static void InputCaptureTimerInit();
 
 	//Хэндлеры таймеров
 	static TIM_HandleTypeDef htimPeriodic;
 	static TIM_HandleTypeDef htimAccurate;
+	static TIM_HandleTypeDef htimInputCapture;
 
 	Pulsar();
 };
 
-extern "C" void TIM3_IRQHandler(void);
+extern "C" void TIM1_UP_IRQHandler(void);
+extern "C" void TIM2_IRQHandler(void);
 extern "C" void TIM3_IRQHandler(void);
 extern "C" void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim);
 extern "C" void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim);
