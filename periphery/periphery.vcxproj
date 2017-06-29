@@ -1,9 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|VisualGDB">
+      <Configuration>Debug</Configuration>
+      <Platform>VisualGDB</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
       <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|VisualGDB">
+      <Configuration>Release</Configuration>
+      <Platform>VisualGDB</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="Release|Win32">
       <Configuration>Release</Configuration>
@@ -24,6 +32,9 @@
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <MCUPropertyListFile>$(ProjectDir)stm32.props</MCUPropertyListFile>
+  </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
@@ -37,7 +48,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <NMakeIncludeSearchPath>.;c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0;c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\arm-eabi\thumb\cortex_m3;c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\backward;c:\sysgcc\arm-eabi\lib\gcc\arm-eabi\6.2.0\include;c:\sysgcc\arm-eabi\lib\gcc\arm-eabi\6.2.0\include-fixed;c:\sysgcc\arm-eabi\arm-eabi\sys-include;c:\sysgcc\arm-eabi\arm-eabi\include;../SourcePeriphery/CanBus/inc;../SourcePeriphery/Common/inc;../SourcePeriphery/Controls/inc;../SourcePeriphery/Drivers/inc;../SourcePeriphery/FreeRTOS/Source/include;../SourcePeriphery/FreeRTOS/Source/CMSIS_RTOS;../SourcePeriphery/App/inc;../SourceShared/Utils/inc;../SourcePeriphery/FreeRTOS/Source;../SourcePeriphery/FreeRTOS/Source/portable/GCC/ARM_CM3;../SourcePeriphery/Mbed/hal;../SourcePeriphery/Mbed/hal/storage_abstraction;../SourcePeriphery/Mbed/targets/cmsis;../SourcePeriphery/Mbed/targets/cmsis/TARGET_STM/TARGET_STM32F1;../SourcePeriphery/Mbed/targets/cmsis/TARGET_STM/TARGET_STM32F1/TARGET_BLUEPILL_F103C8;../SourcePeriphery/Mbed/targets/hal/TARGET_STM/TARGET_STM32F1;../SourcePeriphery/Mbed/api;../SourcePeriphery/Mbed/targets/hal/TARGET_STM/TARGET_STM32F1/TARGET_BLUEPILL_F103C8;../SourceShared/Can/inc;../SourceShared/Drivers/inc;../SourceShared/Models/inc;../SourceShared/inc;../SourcePeriphery/Config/inc;../SourcePeriphery/Devices/inc;../SourcePeriphery/Service/inc;../SourceShared/Service/GPS/inc;../SourcePeriphery/Drivers/Lcd;../SourceShared/Lcd;$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
+    <NMakeIncludeSearchPath>../SourcePeriphery/Drivers/inc;../SourcePeriphery/FreeRTOS/Source/include;../SourcePeriphery/FreeRTOS/Source/CMSIS_RTOS;../SourcePeriphery/App/inc;../SourcePeriphery/FreeRTOS/Source;../SourcePeriphery/FreeRTOS/Source/portable/GCC/ARM_CM3;../SourcePeriphery/Mbed/hal;../SourcePeriphery/Mbed/hal/storage_abstraction;../SourcePeriphery/Mbed/targets/cmsis;../SourcePeriphery/Mbed/targets/cmsis/TARGET_STM/TARGET_STM32F1;../SourcePeriphery/Mbed/targets/cmsis/TARGET_STM/TARGET_STM32F1/TARGET_BLUEPILL_F103C8;../SourcePeriphery/Mbed/targets/hal/TARGET_STM/TARGET_STM32F1;../SourcePeriphery/Mbed/api;../SourcePeriphery/Mbed/targets/hal/TARGET_STM/TARGET_STM32F1/TARGET_BLUEPILL_F103C8;../SourcePeriphery/Config/inc;../SourcePeriphery/Service/inc;.;c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0;c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\arm-eabi\thumb\cortex_m3;c:\sysgcc\arm-eabi\arm-eabi\include\c++\6.2.0\backward;c:\sysgcc\arm-eabi\lib\gcc\arm-eabi\6.2.0\include;c:\sysgcc\arm-eabi\lib\gcc\arm-eabi\6.2.0\include-fixed;c:\sysgcc\arm-eabi\arm-eabi\sys-include;c:\sysgcc\arm-eabi\arm-eabi\include;$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
     <NMakeForcedIncludes>$(ProjectDir)\gcc_Debug.h;$(VISUALGDB_DIR)\gcc_compat.h;$(LOCALAPPDATA)\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\stm32_compat.h;$(NMakeForcedIncludes)</NMakeForcedIncludes>
     <NMakeBuildCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /build "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeBuildCommandLine>
     <NMakeCleanCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /clean "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeCleanCommandLine>
@@ -60,16 +71,22 @@
     <ReferencePath />
     <LibraryPath />
   </PropertyGroup>
-  <ItemDefinitionGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <Toolchain>c:\SysGCC\arm-eabi</Toolchain>
+    <VisualGDBSettingsFile>periphery.vgdbsettings</VisualGDBSettingsFile>
+    <GNUConfigurationType>Debug</GNUConfigurationType>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>../SourcePeriphery/CanBus/inc;../SourcePeriphery/Common/inc;../SourcePeriphery/Controls/inc;../SourcePeriphery/Drivers/inc;../SourcePeriphery/FreeRTOS/Source/include;../SourcePeriphery/FreeRTOS/Source/CMSIS_RTOS;../SourcePeriphery/App/inc;../SourcePeriphery/Services/inc;../SourceShared/Utils/inc;../SourcePeriphery/FreeRTOS/Source;../SourcePeriphery/FreeRTOS/Source/portable/GCC/ARM_CM3;../SourcePeriphery/Mbed/hal;../SourcePeriphery/Mbed/hal/storage_abstraction;../SourcePeriphery/Mbed/targets/cmsis;../SourcePeriphery/Mbed/targets/cmsis/TARGET_STM/TARGET_STM32F1;../SourcePeriphery/Mbed/targets/cmsis/TARGET_STM/TARGET_STM32F1/TARGET_BLUEPILL_F103C8;../SourcePeriphery/Mbed/targets/hal/TARGET_STM/TARGET_STM32F1;../SourcePeriphery/Mbed/targets/cmsis/TARGET_STM/TARGET_STM32F1/TARGET_BLUEPILL_F103C8;../SourcePeriphery/Mbed/api;../SourcePeriphery/Mbed/targets/hal/TARGET_STM/TARGET_STM32F1/TARGET_BLUEPILL_F103C8;../SourceShared/Can/inc;../SourceShared/Drivers/inc;../SourceShared/Models/inc;../SourceShared/inc;../SourcePeriphery/Config/inc;../SourcePeriphery/Devices/inc;../SourcePeriphery/Service/inc;../SourceShared/Models/inc;../SourceShared/Service/GPS/inc;../SourcePeriphery/Drivers/Lcd;../SourceShared/Lcd;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG=1;RELEASE=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <LinkerScript>STM32F103CB_flash.lds</LinkerScript>
+    </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="..\SourcePeriphery\DeviceSpecific\STM32F103CB_flash.lds" />
-    <None Include="debug.mak" />
-    <None Include="Makefile" />
-    <None Include="periphery-Debug.vgdbsettings" />
-    <None Include="periphery-Release.vgdbsettings" />
-    <None Include="release.mak" />
-    <None Include="STM32F103CB_flash.lds" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="stm32.xml" />
@@ -245,6 +262,7 @@
     <ClInclude Include="..\SourcePeriphery\Mbed\targets\hal\TARGET_STM\TARGET_STM32F1\TARGET_BLUEPILL_F103C8\PinNames.h" />
     <ClInclude Include="..\SourcePeriphery\Mbed\targets\hal\TARGET_STM\TARGET_STM32F1\TARGET_BLUEPILL_F103C8\PortNames.h" />
     <ClInclude Include="..\SourcePeriphery\Service\inc\OsTimer.h" />
+    <ClInclude Include="..\SourcePeriphery\Service\inc\Pulsar.h" />
     <ClInclude Include="..\SourcePeriphery\Service\inc\PulseGenerator.h" />
     <ClInclude Include="..\Source\Common\inc\defines.h" />
     <ClInclude Include="..\Source\Controls\inc\FlaperonsController.h" />
@@ -361,6 +379,7 @@
     <ClCompile Include="..\SourcePeriphery\Mbed\targets\hal\TARGET_STM\TARGET_STM32F1\TARGET_BLUEPILL_F103C8\PeripheralPins.c" />
     <ClCompile Include="..\SourcePeriphery\Mbed\targets\hal\TARGET_STM\TARGET_STM32F1\us_ticker.c" />
     <ClCompile Include="..\SourcePeriphery\Service\src\OsTimer.cpp" />
+    <ClCompile Include="..\SourcePeriphery\Service\src\Pulsar.cpp" />
     <ClCompile Include="..\SourcePeriphery\Service\src\PulseGenerator.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
