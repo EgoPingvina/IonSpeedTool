@@ -13,6 +13,7 @@ int main()
 	SystemClock_Config();
 
 	Pulsar& pulsar = Pulsar::Instance();
+	pulsar.Initialize();
 
 	osKernelStart();
 }
